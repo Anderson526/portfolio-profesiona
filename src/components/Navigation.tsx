@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { List, X } from '@phosphor-icons/react'
+import { List, X, GearSix } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
+import { AdminPanel } from '@/components/AdminPanel'
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
+  const [isAdminOpen, setIsAdminOpen] = useState(false)
 
   const navItems = [
     { id: 'hero', label: 'Home' },
@@ -85,16 +87,37 @@ export function Navigation() {
                   />
                 </button>
               ))}
+              
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsAdminOpen(true)}
+                className="hover:bg-accent/10 hover:text-accent"
+                title="Admin Panel"
+              >
+                <GearSix size={20} weight="fill" />
+              </Button>
             </div>
 
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <List size={24} />}
-            </Button>
+            <div className="flex items-center gap-2 md:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsAdminOpen(true)}
+                className="hover:bg-accent/10 hover:text-accent"
+                title="Admin Panel"
+              >
+                <GearSix size={20} weight="fill" />
+              </Button>
+              
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <List size={24} />}
+              </Button>
+            </div>
           </div>
         </div>
       </motion.nav>
@@ -129,6 +152,8 @@ export function Navigation() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AdminPanel isOpen={isAdminOpen} onClose={() => setIsAdminOpen(false)} />
     </>
   )
 }
