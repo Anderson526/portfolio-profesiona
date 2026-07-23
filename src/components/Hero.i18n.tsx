@@ -60,7 +60,7 @@ export function Hero() {
               size="lg" 
               variant="outline"
               className="border-accent/50 text-foreground hover:bg-accent/10 transition-all hover:scale-105"
-              onClick(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               {t('hero.getInTouch')}
             </Button>
