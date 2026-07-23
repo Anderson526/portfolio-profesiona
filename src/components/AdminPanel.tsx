@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { Plus, Pencil, Trash, X, FloppyDisk, Eye, EyeSlash, LockKey } from '@phosphor-icons/react'
+import { Plus, Pencil, Trash, X, FloppyDisk, Eye, EyeSlash, LockKey, MagnifyingGlass, Funnel } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -35,6 +35,8 @@ export function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
   const [editingProject, setEditingProject] = useState<Project | null>(null)
   const [isEditing, setIsEditing] = useState(false)
   const [user, setUser] = useState<{ isOwner: boolean } | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedTech, setSelectedTech] = useState<string | null>(null)
 
   const [formData, setFormData] = useState({
     title: '',
@@ -60,6 +62,39 @@ export function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
     }
     checkUser()
   }, [])
+
+  const allTechnologies = useMemo(() => {
+    if (!projects) return []
+    const techSet = new Set<string>()
+    projects.forEach(project => {
+      project.technologies.forEach(tech => techSet.add(tech))
+    })
+    return Array.from(techSet).sort()
+  }, [projects])
+
+  const filteredProjects = useMemo(() => {
+    if (!projects) return []
+    
+    let filtered = projects
+
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase()
+      filtered = filtered.filter(project =>
+        project.title.toLowerCase().includes(query) ||
+        project.description.toLowerCase().includes(query) ||
+        project.longDescription.toLowerCase().includes(query) ||
+        project.technologies.some(tech => tech.toLowerCase().includes(query))
+      )
+    }
+
+    if (selectedTech) {
+      filtered = filtered.filter(project =>
+        project.technologies.includes(selectedTech)
+      )
+    }
+
+    return filtered
+  }, [projects, searchQuery, selectedTech])
 
   const handleLogin = () => {
     if (password === 'admin123') {
@@ -204,6 +239,11 @@ export function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
           <DialogTitle className="text-2xl font-bold">Project Management</DialogTitle>
           <DialogDescription>
             Add, edit, or delete portfolio projects
+            {projects && projects.length > 0 && (
+              <span className="ml-2 text-accent">
+                ({filteredProjects.length} of {projects.length} {projects.length === 1 ? 'project' : 'projects'})
+              </span>
+            )}
           </DialogDescription>
         </DialogHeader>
 
@@ -217,13 +257,80 @@ export function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
               Add New Project
             </Button>
 
+            {projects && projects.length > 0 && (
+              <div className="space-y-3">
+                <div className="relative">
+                  <MagnifyingGlass 
+                    size={18} 
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" 
+                  />
+                  <Input
+                    placeholder="Search projects by title, description, or technology..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-10"
+                  />
+                </div>
+
+                {allTechnologies.length > 0 && (
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Funnel size={16} />
+                      <span>Filter by technology:</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge
+                        variant={selectedTech === null ? 'default' : 'outline'}
+                        className={`cursor-pointer transition-colors ${
+                          selectedTech === null 
+                            ? 'bg-accent text-accent-foreground' 
+                            : 'hover:bg-accent/10'
+                        }`}
+                        onClick={() => setSelectedTech(null)}
+                      >
+                        All
+                      </Badge>
+                      {allTechnologies.map((tech) => (
+                        <Badge
+                          key={tech}
+                          variant={selectedTech === tech ? 'default' : 'outline'}
+                          className={`cursor-pointer transition-colors ${
+                            selectedTech === tech 
+                              ? 'bg-accent text-accent-foreground' 
+                              : 'hover:bg-accent/10'
+                          }`}
+                          onClick={() => setSelectedTech(tech)}
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
             {projects && projects.length === 0 ? (
               <div className="text-center py-12 text-muted-foreground">
                 <p>No projects yet. Add your first project!</p>
               </div>
+            ) : filteredProjects.length === 0 ? (
+              <div className="text-center py-12 text-muted-foreground">
+                <p>No projects match your search criteria.</p>
+                <Button
+                  variant="link"
+                  onClick={() => {
+                    setSearchQuery('')
+                    setSelectedTech(null)
+                  }}
+                  className="mt-2"
+                >
+                  Clear filters
+                </Button>
+              </div>
             ) : (
               <div className="grid gap-4">
-                {projects?.map((project) => (
+                {filteredProjects.map((project) => (
                   <motion.div
                     key={project.id}
                     initial={{ opacity: 0, y: 20 }}

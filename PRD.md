@@ -40,6 +40,13 @@ A sophisticated senior developer portfolio showcasing professional experience, c
 - **Progression**: User clicks card → Modal/page opens with fade → Content displays with media → User can navigate to GitHub or live site → Close returns to gallery
 - **Success criteria**: All project data displays correctly, external links open in new tabs, images load properly
 
+### Admin Panel with Project Management
+- **Functionality**: Secure admin interface for creating, editing, and deleting projects with search and filtering capabilities
+- **Purpose**: Enables portfolio owner to manage content without code changes
+- **Trigger**: Owner authentication via password or GitHub user verification
+- **Progression**: Owner accesses admin → Authenticates → Views project list with search/filter → Can add new project → Edit existing → Delete unwanted → Changes persist immediately
+- **Success criteria**: Authentication works, CRUD operations save correctly, search filters by title/description/technology, technology filter shows all unique techs, results counter updates, data persists between sessions
+
 ### Smooth Navigation
 - **Functionality**: Fixed/sticky navigation with smooth scroll to sections
 - **Purpose**: Enables easy navigation throughout the single-page portfolio
