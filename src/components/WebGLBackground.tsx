@@ -4,6 +4,7 @@ import * as THREE from 'three'
 export function WebGLBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mouseRef = useRef({ x: 0, y: 0 })
+  const scrollRef = useRef(0)
 
   useEffect(() => {
     if (!canvasRef.current) return
@@ -57,6 +58,10 @@ export function WebGLBackground() {
       mouseRef.current.y = -(event.clientY / window.innerHeight) * 2 + 1
     }
 
+    const handleScroll = () => {
+      scrollRef.current = window.scrollY
+    }
+
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight
       camera.updateProjectionMatrix()
@@ -64,19 +69,27 @@ export function WebGLBackground() {
     }
 
     window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', handleResize)
 
     const animate = () => {
       requestAnimationFrame(animate)
 
+      const scrollProgress = Math.min(scrollRef.current / window.innerHeight, 1)
+
       torus.rotation.x += 0.002
       torus.rotation.y += 0.003
       torus.rotation.z += 0.001
 
+      torus.position.y = scrollProgress * 3
+      torus.position.x = scrollProgress * -2
+
       particlesMesh.rotation.y += 0.0005
+      particlesMesh.position.y = scrollProgress * 2
 
       camera.position.x += (mouseRef.current.x * 0.5 - camera.position.x) * 0.05
       camera.position.y += (mouseRef.current.y * 0.5 - camera.position.y) * 0.05
+      camera.position.z = 5 + scrollProgress * 2
 
       renderer.render(scene, camera)
     }
@@ -85,6 +98,7 @@ export function WebGLBackground() {
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleResize)
       geometry.dispose()
       material.dispose()
