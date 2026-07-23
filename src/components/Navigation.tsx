@@ -76,7 +76,16 @@ export function Navigation({ onShowAllProjects }: NavigationProps) {
             <motion.button
               onClick={() => scrollToSection('hero')}
               className="text-accent hover:text-accent/80 transition-colors"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ 
+                scale: 1.05,
+                rotate: [0, 14, -8, 14, -4, 10, 0],
+                transition: { 
+                  rotate: { 
+                    duration: 0.6,
+                    ease: "easeInOut"
+                  }
+                }
+              }}
               whileTap={{ scale: 0.95 }}
               title="Alex Rodriguez - Developer"
             >
