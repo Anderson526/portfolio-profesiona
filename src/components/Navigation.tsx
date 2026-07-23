@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { List, X, GearSix, Translate } from '@phosphor-icons/react'
+import { List, X, GearSix, Translate, HandWaving } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
 import { AdminPanel } from '@/components/AdminPanel'
 import { useLanguage } from '@/hooks/use-language'
@@ -75,11 +75,12 @@ export function Navigation({ onShowAllProjects }: NavigationProps) {
           <div className="flex items-center justify-between">
             <motion.button
               onClick={() => scrollToSection('hero')}
-              className="text-xl font-bold tracking-tight hover:text-accent transition-colors"
+              className="text-accent hover:text-accent/80 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              title="Alex Rodriguez - Developer"
             >
-              AR
+              <HandWaving size={32} weight="fill" />
             </motion.button>
 
             <div className="hidden md:flex items-center gap-8">
