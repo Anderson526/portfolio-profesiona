@@ -5,36 +5,19 @@ import { Briefcase, GraduationCap, Code } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
+import { useLanguage } from '@/hooks/use-language'
 
 export function About() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const { t } = useLanguage()
 
   const skills = [
     'React', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL', 'MongoDB',
     'AWS', 'Docker', 'GraphQL', 'Next.js', 'Three.js', 'WebGL'
   ]
 
-  const experience = [
-    {
-      title: 'Lead Software Engineer',
-      company: 'Tech Innovations Inc.',
-      period: '2021 - Present',
-      description: 'Leading a team of 8 developers building scalable web applications and microservices architecture.'
-    },
-    {
-      title: 'Senior Full Stack Developer',
-      company: 'Digital Solutions Co.',
-      period: '2018 - 2021',
-      description: 'Developed enterprise-level applications using React, Node.js, and cloud infrastructure.'
-    },
-    {
-      title: 'Full Stack Developer',
-      company: 'StartUp Ventures',
-      period: '2015 - 2018',
-      description: 'Built MVPs and production applications for various clients across different industries.'
-    }
-  ]
+  const experience = t('experience')
 
   return (
     <section id="about" ref={ref} className="py-24 relative">
@@ -48,7 +31,7 @@ export function About() {
           <div className="flex items-center gap-3 mb-12">
             <Code size={32} className="text-accent" weight="duotone" />
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight" style={{ letterSpacing: '-0.01em' }}>
-              About Me
+              {t('about.title')}
             </h2>
           </div>
 
@@ -59,17 +42,13 @@ export function About() {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                With over 8 years of experience in software development, I specialize in creating 
-                high-performance web applications that combine elegant design with robust functionality.
+                {t('about.intro1')}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                My passion lies in solving complex problems through clean, maintainable code and 
-                innovative solutions. I thrive in collaborative environments where I can mentor 
-                junior developers while continuously learning new technologies.
+                {t('about.intro2')}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                When I'm not coding, you'll find me contributing to open-source projects, writing 
-                technical articles, or exploring the latest developments in web3 and AI.
+                {t('about.intro3')}
               </p>
             </motion.div>
 
@@ -80,10 +59,10 @@ export function About() {
             >
               <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                 <GraduationCap size={24} className="text-accent" weight="duotone" />
-                Skills & Technologies
+                {t('about.skillsTitle')}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {skills.map((skill, index) => (
+                {skills.map((skill) => (
                   <Badge 
                     key={skill} 
                     variant="secondary"
@@ -105,11 +84,11 @@ export function About() {
           >
             <h3 className="text-2xl font-semibold mb-8 flex items-center gap-2">
               <Briefcase size={28} className="text-accent" weight="duotone" />
-              Experience
+              {t('about.experienceTitle')}
             </h3>
             
             <div className="space-y-8">
-              {experience.map((exp, index) => (
+              {experience.map((exp: any, index: number) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}

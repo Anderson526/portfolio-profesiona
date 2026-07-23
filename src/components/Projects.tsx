@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { useKV } from '@github/spark/hooks'
+import { useLanguage } from '@/hooks/use-language'
 
 interface Project {
   id: string
@@ -81,6 +82,7 @@ export function Projects() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [projects, setProjects] = useKV<Project[]>('portfolio-projects', [])
+  const { t } = useLanguage()
   
   useEffect(() => {
     if (!projects || projects.length === 0) {
@@ -103,7 +105,7 @@ export function Projects() {
             <div className="flex items-center gap-3 mb-12">
               <Folder size={32} className="text-accent" weight="duotone" />
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight" style={{ letterSpacing: '-0.01em' }}>
-                Featured Projects
+                {t('projects.title')}
               </h2>
             </div>
 
@@ -115,7 +117,7 @@ export function Projects() {
                 className="text-center py-20"
               >
                 <Folder size={64} className="text-muted-foreground mx-auto mb-4" weight="duotone" />
-                <p className="text-xl text-muted-foreground">No projects yet. Check back soon!</p>
+                <p className="text-xl text-muted-foreground">{t('projects.noProjects')}</p>
               </motion.div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -147,14 +149,14 @@ export function Projects() {
 
               <div className="space-y-6 mt-6">
                 <div>
-                  <h4 className="text-lg font-semibold mb-3">About This Project</h4>
+                  <h4 className="text-lg font-semibold mb-3">{t('projects.aboutProject')}</h4>
                   <p className="text-muted-foreground leading-relaxed">
                     {selectedProject.longDescription}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-semibold mb-3">Technologies Used</h4>
+                  <h4 className="text-lg font-semibold mb-3">{t('projects.technologiesUsed')}</h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map((tech) => (
                       <Badge 
@@ -174,7 +176,7 @@ export function Projects() {
                     onClick={() => window.open(selectedProject.githubUrl, '_blank')}
                   >
                     <GithubLogo size={20} weight="fill" className="mr-2" />
-                    View Code
+                    {t('projects.viewCode')}
                   </Button>
                   <Button 
                     variant="outline"
@@ -182,7 +184,7 @@ export function Projects() {
                     onClick={() => window.open(selectedProject.liveUrl, '_blank')}
                   >
                     <Globe size={20} weight="fill" className="mr-2" />
-                    Live Demo
+                    {t('projects.liveDemo')}
                   </Button>
                 </div>
               </div>
@@ -202,6 +204,8 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project, index, isInView, onClick }: ProjectCardProps) {
+  const { t } = useLanguage()
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -260,7 +264,7 @@ function ProjectCard({ project, index, isInView, onClick }: ProjectCardProps) {
             }}
           >
             <GithubLogo size={16} weight="fill" className="mr-2" />
-            Code
+            {t('projects.code')}
           </Button>
           <Button 
             variant="ghost" 
@@ -272,7 +276,7 @@ function ProjectCard({ project, index, isInView, onClick }: ProjectCardProps) {
             }}
           >
             <Globe size={16} weight="fill" className="mr-2" />
-            Demo
+            {t('projects.demo')}
           </Button>
         </CardFooter>
       </Card>

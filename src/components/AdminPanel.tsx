@@ -10,6 +10,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Badge } from '@/components/ui/badge'
 import { toast } from 'sonner'
 import { useKV } from '@github/spark/hooks'
+import { useLanguage } from '@/hooks/use-language'
 
 interface Project {
   id: string
@@ -37,6 +38,7 @@ export function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
   const [user, setUser] = useState<{ isOwner: boolean } | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedTech, setSelectedTech] = useState<string | null>(null)
+  const { t } = useLanguage()
 
   const [formData, setFormData] = useState({
     title: '',
@@ -100,9 +102,9 @@ export function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
     if (password === 'admin123') {
       setIsAuthenticated(true)
       setPassword('')
-      toast.success('Welcome to Admin Panel')
+      toast.success(t('admin.welcomeAdmin'))
     } else {
-      toast.error('Invalid password')
+      toast.error(t('admin.invalidPassword'))
     }
   }
 
@@ -136,12 +138,12 @@ export function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
   const handleDeleteProject = (projectId: string) => {
     setProjects((currentProjects) => (currentProjects || []).filter(p => p.id !== projectId))
-    toast.success('Project deleted successfully')
+    toast.success(t('admin.projectDeleted'))
   }
 
   const handleSaveProject = () => {
     if (!formData.title || !formData.description) {
-      toast.error('Title and description are required')
+      toast.error(t('admin.titleDescRequired'))
       return
     }
 
@@ -160,10 +162,10 @@ export function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
       setProjects((currentProjects) => 
         (currentProjects || []).map(p => p.id === editingProject.id ? newProject : p)
       )
-      toast.success('Project updated successfully')
+      toast.success(t('admin.projectUpdated'))
     } else {
       setProjects((currentProjects) => [...(currentProjects || []), newProject])
-      toast.success('Project added successfully')
+      toast.success(t('admin.projectAdded'))
     }
 
     setIsEditing(false)

@@ -4,36 +4,38 @@ import { useRef } from 'react'
 import { GithubLogo, LinkedinLogo, EnvelopeSimple, TwitterLogo } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import { useLanguage } from '@/hooks/use-language'
 
 export function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const { t } = useLanguage()
 
   const contactMethods = [
     {
       icon: EnvelopeSimple,
-      label: 'Email',
+      label: t('contact.email'),
       value: 'alex@example.com',
       href: 'mailto:alex@example.com',
       color: 'hover:text-accent'
     },
     {
       icon: GithubLogo,
-      label: 'GitHub',
+      label: t('contact.github'),
       value: '@alexrodriguez',
       href: 'https://github.com',
       color: 'hover:text-accent'
     },
     {
       icon: LinkedinLogo,
-      label: 'LinkedIn',
+      label: t('contact.linkedin'),
       value: 'Alex Rodriguez',
       href: 'https://linkedin.com',
       color: 'hover:text-accent'
     },
     {
       icon: TwitterLogo,
-      label: 'Twitter',
+      label: t('contact.twitter'),
       value: '@alexdev',
       href: 'https://twitter.com',
       color: 'hover:text-accent'
@@ -50,10 +52,10 @@ export function Contact() {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight" style={{ letterSpacing: '-0.01em' }}>
-            Let's Work Together
+            {t('contact.title')}
           </h2>
           <p className="text-xl text-muted-foreground mb-12 leading-relaxed max-w-2xl mx-auto">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            {t('contact.description')}
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
@@ -94,7 +96,7 @@ export function Contact() {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="text-sm text-muted-foreground"
           >
-            <p>© 2024 Alex Rodriguez. Built with React, TypeScript & Three.js</p>
+            <p>{t('contact.footer')}</p>
           </motion.div>
         </motion.div>
       </div>
