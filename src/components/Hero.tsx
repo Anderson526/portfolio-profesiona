@@ -52,7 +52,12 @@ export function Hero() {
             <Button 
               size="lg" 
               className="bg-accent text-accent-foreground hover:bg-accent/90 transition-all hover:scale-105"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const projectsSection = document.getElementById('projects')
+                if (projectsSection) {
+                  projectsSection.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
             >
               {t('hero.viewProjects')}
             </Button>
@@ -60,7 +65,12 @@ export function Hero() {
               size="lg" 
               variant="outline"
               className="border-accent/50 text-foreground hover:bg-accent/10 transition-all hover:scale-105"
-              onClick(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const contactSection = document.getElementById('contact')
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
             >
               {t('hero.getInTouch')}
             </Button>
