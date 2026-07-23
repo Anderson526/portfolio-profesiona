@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { GithubLogo, Globe, Folder } from '@phosphor-icons/react'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -19,11 +19,74 @@ interface Project {
   imageUrl?: string
 }
 
+const SAMPLE_PROJECTS: Project[] = [
+  {
+    id: '1',
+    title: 'E-Commerce Platform',
+    description: 'A modern, full-featured online marketplace with real-time inventory and payment processing.',
+    longDescription: 'Built a comprehensive e-commerce solution featuring real-time inventory management, secure payment processing with Stripe, advanced search and filtering, order tracking, and an admin dashboard. The platform handles thousands of concurrent users with optimized performance and caching strategies.',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Stripe', 'Redis', 'AWS'],
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  },
+  {
+    id: '2',
+    title: 'AI-Powered Analytics Dashboard',
+    description: 'Real-time data visualization platform with machine learning insights and predictive analytics.',
+    longDescription: 'Developed an advanced analytics dashboard that processes millions of data points in real-time. Integrated machine learning models for predictive analytics, anomaly detection, and trend forecasting. Features interactive charts, customizable widgets, and automated reporting capabilities.',
+    technologies: ['React', 'D3.js', 'Python', 'TensorFlow', 'FastAPI', 'MongoDB', 'Docker', 'Kubernetes'],
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  },
+  {
+    id: '3',
+    title: 'Collaborative Workspace Tool',
+    description: 'Team collaboration platform with real-time editing, video conferencing, and project management.',
+    longDescription: 'Created a comprehensive collaboration tool that combines real-time document editing, video conferencing, task management, and team chat. Implemented operational transformation for conflict-free collaborative editing and WebRTC for peer-to-peer communication.',
+    technologies: ['React', 'WebSocket', 'WebRTC', 'Node.js', 'MongoDB', 'Redis', 'Electron', 'GraphQL'],
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  },
+  {
+    id: '4',
+    title: '3D Product Configurator',
+    description: 'Interactive 3D visualization tool for customizing products with real-time rendering.',
+    longDescription: 'Built an immersive 3D product configurator using Three.js and WebGL. Users can customize materials, colors, and components in real-time with photorealistic rendering. Integrated with e-commerce backend for seamless purchasing of customized products.',
+    technologies: ['React', 'Three.js', 'WebGL', 'TypeScript', 'Blender', 'Node.js', 'AWS S3'],
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  },
+  {
+    id: '5',
+    title: 'Healthcare Management System',
+    description: 'HIPAA-compliant patient management system with telemedicine and electronic health records.',
+    longDescription: 'Developed a secure healthcare platform featuring patient portals, appointment scheduling, telemedicine video consultations, electronic health records, and prescription management. Implemented end-to-end encryption and audit logging for HIPAA compliance.',
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'WebRTC', 'FHIR', 'Docker', 'AWS', 'OAuth 2.0'],
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  },
+  {
+    id: '6',
+    title: 'Blockchain NFT Marketplace',
+    description: 'Decentralized marketplace for creating, buying, and selling NFTs with smart contracts.',
+    longDescription: 'Built a full-stack NFT marketplace on Ethereum blockchain. Features include minting NFTs, auction mechanisms, wallet integration, royalty distribution, and IPFS storage for digital assets. Implemented smart contracts with comprehensive testing and security audits.',
+    technologies: ['React', 'Solidity', 'Ethereum', 'Web3.js', 'IPFS', 'Hardhat', 'TypeScript', 'The Graph'],
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  }
+]
+
 export function Projects() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [projects] = useKV<Project[]>('portfolio-projects', [])
+  const [projects, setProjects] = useKV<Project[]>('portfolio-projects', [])
+  
+  useEffect(() => {
+    if (!projects || projects.length === 0) {
+      setProjects(SAMPLE_PROJECTS)
+    }
+  }, [projects, setProjects])
   
   const projectsList = projects || []
 
