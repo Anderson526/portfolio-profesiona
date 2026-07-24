@@ -9,8 +9,8 @@ export const translations = {
       allProjects: 'All Projects'
     },
     hero: {
-      title: 'Alex Rodriguez',
-      subtitle: 'SENIOR DEVELOPER',
+      title: 'Anderson Chila',
+      subtitle: 'Desarrollador full stack',
       description: 'Crafting elegant digital experiences through code, design, and innovation. Specialized in full-stack development with a passion for cutting-edge technologies.',
       viewProjects: 'View Projects',
       getInTouch: 'Get In Touch'
@@ -76,7 +76,7 @@ export const translations = {
       github: 'GitHub',
       linkedin: 'LinkedIn',
       twitter: 'Twitter',
-      footer: '© 2024 Alex Rodriguez. Built with React, TypeScript & Three.js'
+      footer: '© 2026 Anderson Chila. Built with React, TypeScript & Three.js'
     },
     admin: {
       title: 'Project Management',
@@ -117,22 +117,16 @@ export const translations = {
     },
     experience: [
       {
-        title: 'Lead Software Engineer',
-        company: 'Tech Innovations Inc.',
-        period: '2021 - Present',
-        description: 'Leading a team of 8 developers building scalable web applications and microservices architecture.'
+        title: 'Desarrollador Wordpress - PHP',
+        company: 'Icontec Instituto de normas colombianas.',
+        period: '2025 - Present',
+        description: 'construccion de aplicaciones web, eccomece y landing pages por medio de tecnologias js, php, node js desde el gestor de contenido Wordpress realizado solo desarrollo con codigo'
       },
       {
-        title: 'Senior Full Stack Developer',
-        company: 'Digital Solutions Co.',
-        period: '2018 - 2021',
-        description: 'Developed enterprise-level applications using React, Node.js, and cloud infrastructure.'
-      },
-      {
-        title: 'Full Stack Developer',
-        company: 'StartUp Ventures',
-        period: '2015 - 2018',
-        description: 'Built MVPs and production applications for various clients across different industries.'
+        title: 'web developer',
+        company: 'Colnodo',
+        period: '2022 - 2025',
+        description: 'Construccion de paginas y aplicaciones web por edio de tecnologias como HTML, CSS, JS y PHP.  Manejo de crm como wordpress.'
       }
     ]
   },
@@ -146,15 +140,15 @@ export const translations = {
       allProjects: 'Todos los Proyectos'
     },
     hero: {
-      title: 'Alex Rodriguez',
-      subtitle: 'DESARROLLADOR SENIOR',
+      title: 'Anderson Chila',
+      subtitle: 'Desarrollador FullStack',
       description: 'Creando experiencias digitales elegantes a través del código, diseño e innovación. Especializado en desarrollo full-stack con pasión por las tecnologías de vanguardia.',
       viewProjects: 'Ver Proyectos',
       getInTouch: 'Contactar'
     },
     about: {
       title: 'Acerca de Mí',
-      intro1: 'Con más de 8 años de experiencia en desarrollo de software, me especializo en crear aplicaciones web de alto rendimiento que combinan diseño elegante con funcionalidad robusta.',
+      intro1: 'Con más de 5 años de experiencia en desarrollo de software, me especializo en crear aplicaciones web de alto rendimiento que combinan diseño elegante con funcionalidad robusta.',
       intro2: 'Mi pasión radica en resolver problemas complejos a través de código limpio y mantenible, y soluciones innovadoras. Prospero en entornos colaborativos donde puedo mentorear desarrolladores junior mientras aprendo continuamente nuevas tecnologías.',
       intro3: 'Cuando no estoy programando, me encontrarás contribuyendo a proyectos de código abierto, escribiendo artículos técnicos o explorando los últimos desarrollos en web3 e IA.',
       skillsTitle: 'Habilidades y Tecnologías',

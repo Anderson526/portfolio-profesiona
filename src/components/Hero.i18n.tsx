@@ -73,7 +73,7 @@ export function Hero() {
             className="flex gap-6 justify-center mt-16"
           >
             <a 
-              href="https://github.com" 
+              href="https://github.com/Anderson526" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-accent transition-colors"
@@ -81,7 +81,7 @@ export function Hero() {
               <GithubLogo size={28} weight="fill" />
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/in/anderson-chila-36344923b/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-accent transition-colors"
@@ -89,7 +89,7 @@ export function Hero() {
               <LinkedinLogo size={28} weight="fill" />
             </a>
             <a 
-              href="mailto:alex@example.com"
+              href="mailto:andersonchila16@gmail.com"
               className="text-muted-foreground hover:text-accent transition-colors"
             >
               <EnvelopeSimple size={28} weight="fill" />

@@ -15,29 +15,22 @@ export function Contact() {
     {
       icon: EnvelopeSimple,
       label: t('contact.email'),
-      value: 'alex@example.com',
-      href: 'mailto:alex@example.com',
+      value: 'andersonchila16@gmail.com',
+      href: 'mailto:andersonchila16@gmail.com',
       color: 'hover:text-accent'
     },
     {
       icon: GithubLogo,
       label: t('contact.github'),
-      value: '@alexrodriguez',
-      href: 'https://github.com',
+      value: '@Anderson526',
+      href: 'https://github.com/Anderson526',
       color: 'hover:text-accent'
     },
     {
       icon: LinkedinLogo,
       label: t('contact.linkedin'),
-      value: 'Alex Rodriguez',
-      href: 'https://linkedin.com',
-      color: 'hover:text-accent'
-    },
-    {
-      icon: TwitterLogo,
-      label: t('contact.twitter'),
-      value: '@alexdev',
-      href: 'https://twitter.com',
+      value: 'Anderson Chila',
+      href: 'https://www.linkedin.com/in/anderson-chila-36344923b/?locale=en',
       color: 'hover:text-accent'
     }
   ]
