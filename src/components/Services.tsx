@@ -3,16 +3,30 @@ import { useRef } from 'react'
 import { 
   Code, 
   Rocket, 
-  ShoppingCart, 
-  Lightning,
-  Palette,
-  Gear,
-  Database,
-  GitBranch
+  ShoppingCart
 } from '@phosphor-icons/react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { useLanguage } from '@/hooks/use-language'
+import {
+  ReactLogo,
+  TypeScriptLogo,
+  NextJsLogo,
+  TailwindLogo,
+  ThreeJsLogo,
+  VueLogo,
+  NodeJsLogo,
+  PythonLogo,
+  GraphQLLogo,
+  PostgreSQLLogo,
+  MongoDBLogo,
+  RedisLogo,
+  MySQLLogo,
+  DockerLogo,
+  AWSLogo,
+  GitLogo,
+  KubernetesLogo
+} from '@/components/TechLogos'
 
 const services = [
   {
@@ -46,28 +60,26 @@ interface Technology {
 }
 
 const technologies: Technology[] = [
-  { name: 'React', icon: Code, color: 'from-cyan-400 to-blue-500', category: 'frontend' },
-  { name: 'TypeScript', icon: Code, color: 'from-blue-500 to-blue-600', category: 'frontend' },
-  { name: 'Next.js', icon: Code, color: 'from-gray-700 to-gray-900', category: 'frontend' },
-  { name: 'Tailwind', icon: Palette, color: 'from-cyan-400 to-blue-400', category: 'frontend' },
-  { name: 'Three.js', icon: Lightning, color: 'from-gray-600 to-gray-800', category: 'frontend' },
-  { name: 'Vue.js', icon: Code, color: 'from-green-500 to-teal-500', category: 'frontend' },
+  { name: 'React', icon: ReactLogo, color: 'from-cyan-400 to-blue-500', category: 'frontend' },
+  { name: 'TypeScript', icon: TypeScriptLogo, color: 'from-blue-500 to-blue-600', category: 'frontend' },
+  { name: 'Next.js', icon: NextJsLogo, color: 'from-gray-700 to-gray-900', category: 'frontend' },
+  { name: 'Tailwind', icon: TailwindLogo, color: 'from-cyan-400 to-blue-400', category: 'frontend' },
+  { name: 'Three.js', icon: ThreeJsLogo, color: 'from-gray-600 to-gray-800', category: 'frontend' },
+  { name: 'Vue.js', icon: VueLogo, color: 'from-green-500 to-teal-500', category: 'frontend' },
   
-  { name: 'Node.js', icon: Gear, color: 'from-green-500 to-green-700', category: 'backend' },
-  { name: 'Express', icon: Gear, color: 'from-gray-600 to-gray-800', category: 'backend' },
-  { name: 'Python', icon: Code, color: 'from-blue-400 to-yellow-400', category: 'backend' },
-  { name: 'FastAPI', icon: Lightning, color: 'from-teal-500 to-green-500', category: 'backend' },
-  { name: 'GraphQL', icon: Gear, color: 'from-pink-500 to-purple-500', category: 'backend' },
+  { name: 'Node.js', icon: NodeJsLogo, color: 'from-green-500 to-green-700', category: 'backend' },
+  { name: 'Python', icon: PythonLogo, color: 'from-blue-400 to-yellow-400', category: 'backend' },
+  { name: 'GraphQL', icon: GraphQLLogo, color: 'from-pink-500 to-purple-500', category: 'backend' },
   
-  { name: 'PostgreSQL', icon: Database, color: 'from-blue-500 to-blue-700', category: 'database' },
-  { name: 'MongoDB', icon: Database, color: 'from-green-500 to-green-700', category: 'database' },
-  { name: 'Redis', icon: Database, color: 'from-red-500 to-red-700', category: 'database' },
-  { name: 'MySQL', icon: Database, color: 'from-orange-500 to-blue-500', category: 'database' },
+  { name: 'PostgreSQL', icon: PostgreSQLLogo, color: 'from-blue-500 to-blue-700', category: 'database' },
+  { name: 'MongoDB', icon: MongoDBLogo, color: 'from-green-500 to-green-700', category: 'database' },
+  { name: 'Redis', icon: RedisLogo, color: 'from-red-500 to-red-700', category: 'database' },
+  { name: 'MySQL', icon: MySQLLogo, color: 'from-orange-500 to-blue-500', category: 'database' },
   
-  { name: 'Docker', icon: GitBranch, color: 'from-blue-500 to-cyan-500', category: 'tools' },
-  { name: 'AWS', icon: Lightning, color: 'from-orange-500 to-yellow-500', category: 'tools' },
-  { name: 'Git', icon: GitBranch, color: 'from-orange-600 to-red-600', category: 'tools' },
-  { name: 'Kubernetes', icon: Gear, color: 'from-blue-600 to-purple-600', category: 'tools' }
+  { name: 'Docker', icon: DockerLogo, color: 'from-blue-500 to-cyan-500', category: 'tools' },
+  { name: 'AWS', icon: AWSLogo, color: 'from-orange-500 to-yellow-500', category: 'tools' },
+  { name: 'Git', icon: GitLogo, color: 'from-orange-600 to-red-600', category: 'tools' },
+  { name: 'Kubernetes', icon: KubernetesLogo, color: 'from-blue-600 to-purple-600', category: 'tools' }
 ]
 
 export function Services() {
@@ -182,7 +194,6 @@ export function Services() {
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={isInView ? { opacity: 1, scale: 1 } : {}}
                           transition={{ delay: 0.9 + catIndex * 0.1 + techIndex * 0.05, duration: 0.4 }}
-                          whileHover={{ scale: 1.1, rotate: [0, -5, 5, -5, 0], transition: { duration: 0.3 } }}
                         >
                           <Badge 
                             variant="secondary"
@@ -190,7 +201,7 @@ export function Services() {
                           >
                             <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
                             <div className="flex items-center gap-2 relative z-10">
-                              <TechIcon size={16} weight="duotone" className="group-hover:text-accent transition-colors" />
+                              <TechIcon className={`w-5 h-5 text-accent`} />
                               <span className="font-medium">{tech.name}</span>
                             </div>
                           </Badge>
