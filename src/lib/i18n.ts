@@ -3,10 +3,10 @@ export const translations = {
     nav: {
       home: 'Home',
       about: 'About',
+      services: 'Services',
       projects: 'Projects',
       contact: 'Contact',
-      allProjects: 'All Projects',
-      admin: 'Admin Panel'
+      allProjects: 'All Projects'
     },
     hero: {
       title: 'Alex Rodriguez',
@@ -22,6 +22,27 @@ export const translations = {
       intro3: "When I'm not coding, you'll find me contributing to open-source projects, writing technical articles, or exploring the latest developments in web3 and AI.",
       skillsTitle: 'Skills & Technologies',
       experienceTitle: 'Experience'
+    },
+    services: {
+      title: 'My Services',
+      subtitle: 'Crafting digital experiences with cutting-edge technology',
+      webDev: {
+        title: 'Web Development',
+        description: 'Custom web applications built with modern frameworks and best practices for optimal performance and scalability.'
+      },
+      landing: {
+        title: 'Landing Pages',
+        description: 'High-converting landing pages with stunning design and seamless user experience to grow your business.'
+      },
+      ecommerce: {
+        title: 'E-Commerce',
+        description: 'Complete online store solutions with secure payment processing, inventory management, and analytics.'
+      },
+      techStackTitle: 'Technologies I Work With',
+      frontend: 'Frontend',
+      backend: 'Backend',
+      database: 'Database',
+      tools: 'Tools & DevOps'
     },
     projects: {
       title: 'Featured Projects',
@@ -119,10 +140,10 @@ export const translations = {
     nav: {
       home: 'Inicio',
       about: 'Acerca',
+      services: 'Servicios',
       projects: 'Proyectos',
       contact: 'Contacto',
-      allProjects: 'Todos los Proyectos',
-      admin: 'Panel Admin'
+      allProjects: 'Todos los Proyectos'
     },
     hero: {
       title: 'Alex Rodriguez',
@@ -138,6 +159,27 @@ export const translations = {
       intro3: 'Cuando no estoy programando, me encontrarás contribuyendo a proyectos de código abierto, escribiendo artículos técnicos o explorando los últimos desarrollos en web3 e IA.',
       skillsTitle: 'Habilidades y Tecnologías',
       experienceTitle: 'Experiencia'
+    },
+    services: {
+      title: 'Mis Servicios',
+      subtitle: 'Creando experiencias digitales con tecnología de vanguardia',
+      webDev: {
+        title: 'Desarrollo Web',
+        description: 'Aplicaciones web personalizadas construidas con frameworks modernos y mejores prácticas para un rendimiento y escalabilidad óptimos.'
+      },
+      landing: {
+        title: 'Landing Pages',
+        description: 'Páginas de aterrizaje de alta conversión con diseño impresionante y experiencia de usuario perfecta para hacer crecer tu negocio.'
+      },
+      ecommerce: {
+        title: 'E-Commerce',
+        description: 'Soluciones completas de tienda en línea con procesamiento seguro de pagos, gestión de inventario y analíticas.'
+      },
+      techStackTitle: 'Tecnologías con las que Trabajo',
+      frontend: 'Frontend',
+      backend: 'Backend',
+      database: 'Base de Datos',
+      tools: 'Herramientas y DevOps'
     },
     projects: {
       title: 'Proyectos Destacados',

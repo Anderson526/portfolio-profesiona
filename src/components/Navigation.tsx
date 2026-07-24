@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { List, X, GearSix, Translate, HandWaving } from '@phosphor-icons/react'
+import { List, X, Translate, HandWaving } from '@phosphor-icons/react'
 import { Button } from '@/components/ui/button'
-import { AdminPanel } from '@/components/AdminPanel'
 import { useLanguage } from '@/hooks/use-language'
 import { 
   DropdownMenu,
@@ -19,12 +18,12 @@ export function Navigation({ onShowAllProjects }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
-  const [isAdminOpen, setIsAdminOpen] = useState(false)
   const { t, language, setLanguage } = useLanguage()
 
   const navItems = [
     { id: 'hero', label: t('nav.home') },
     { id: 'about', label: t('nav.about') },
+    { id: 'services', label: t('nav.services') },
     { id: 'projects', label: t('nav.projects') },
     { id: 'contact', label: t('nav.contact') }
   ]
@@ -139,16 +138,6 @@ export function Navigation({ onShowAllProjects }: NavigationProps) {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsAdminOpen(true)}
-                className="hover:bg-accent/10 hover:text-accent"
-                title={t('nav.admin')}
-              >
-                <GearSix size={20} weight="fill" />
-              </Button>
             </div>
 
             <div className="flex items-center gap-2 md:hidden">
@@ -171,15 +160,6 @@ export function Navigation({ onShowAllProjects }: NavigationProps) {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsAdminOpen(true)}
-                className="hover:bg-accent/10 hover:text-accent"
-              >
-                <GearSix size={20} weight="fill" />
-              </Button>
               
               <Button
                 variant="ghost"
@@ -233,8 +213,6 @@ export function Navigation({ onShowAllProjects }: NavigationProps) {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <AdminPanel isOpen={isAdminOpen} onClose={() => setIsAdminOpen(false)} />
     </>
   )
 }
