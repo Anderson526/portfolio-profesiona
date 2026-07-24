@@ -13,8 +13,8 @@ export function About() {
   const { t } = useLanguage()
 
   const skills = [
-    'React', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL', 'MongoDB',
-    'AWS', 'Docker', 'GraphQL', 'Next.js', 'Three.js', 'WebGL'
+    'JavaScript', 'React', 'Python', 'PHP', 'WordPress', 'Node.js',
+    'Git Flow', 'HTML/CSS', 'SEO', 'Web Accessibility', 'E-commerce', 'CRM Systems'
   ]
 
   const experience = t('experience')

@@ -10,16 +10,16 @@ export const translations = {
     },
     hero: {
       title: 'Anderson Chila',
-      subtitle: 'Desarrollador full stack',
-      description: 'Crafting elegant digital experiences through code, design, and innovation. Specialized in full-stack development with a passion for cutting-edge technologies.',
+      subtitle: 'Full Stack Developer',
+      description: 'Creative full-stack developer specializing in AI-powered code development, web applications, CRM systems, and WordPress. Building accessible, SEO-optimized digital experiences with modern technologies.',
       viewProjects: 'View Projects',
       getInTouch: 'Get In Touch'
     },
     about: {
       title: 'About Me',
-      intro1: 'With over 8 years of experience in software development, I specialize in creating high-performance web applications that combine elegant design with robust functionality.',
-      intro2: 'My passion lies in solving complex problems through clean, maintainable code and innovative solutions. I thrive in collaborative environments where I can mentor junior developers while continuously learning new technologies.',
-      intro3: "When I'm not coding, you'll find me contributing to open-source projects, writing technical articles, or exploring the latest developments in web3 and AI.",
+      intro1: 'Full-stack developer with a creative approach and a strong focus on AI for code development. I specialize in building web applications, landing pages, CRM systems, and content management solutions using WordPress.',
+      intro2: 'Experienced in e-commerce development, web accessibility, SEO best practices, and collaborative workflows using Git Flow. I thrive in team environments and deliver scalable solutions with clean, maintainable code.',
+      intro3: "My technical stack includes JavaScript, React, Python, and PHP, along with their related frameworks and libraries. Currently exploring AI-driven development tools to enhance productivity and code quality.",
       skillsTitle: 'Skills & Technologies',
       experienceTitle: 'Experience'
     },
@@ -28,15 +28,15 @@ export const translations = {
       subtitle: 'Crafting digital experiences with cutting-edge technology',
       webDev: {
         title: 'Web Development',
-        description: 'Custom web applications built with modern frameworks and best practices for optimal performance and scalability.'
+        description: 'Custom web applications and CRM systems built with modern technologies including JavaScript, React, PHP, and WordPress. Focus on clean code, accessibility, and SEO optimization.'
       },
       landing: {
-        title: 'Landing Pages',
-        description: 'High-converting landing pages with stunning design and seamless user experience to grow your business.'
+        title: 'Landing Pages & CMS',
+        description: 'High-converting landing pages and content management solutions using WordPress. Expertise in custom development, responsive design, and integration with third-party services.'
       },
       ecommerce: {
-        title: 'E-Commerce',
-        description: 'Complete online store solutions with secure payment processing, inventory management, and analytics.'
+        title: 'E-Commerce Solutions',
+        description: 'Complete e-commerce platforms with secure payment processing, inventory management, and customer experience optimization. Built with scalability and performance in mind.'
       },
       techStackTitle: 'Technologies I Work With',
       frontend: 'Frontend',
@@ -76,7 +76,7 @@ export const translations = {
       github: 'GitHub',
       linkedin: 'LinkedIn',
       twitter: 'Twitter',
-      footer: '© 2026 Anderson Chila. Built with React, TypeScript & Three.js'
+      footer: '© 2025 Anderson Chila. Built with React, TypeScript & Three.js'
     },
     admin: {
       title: 'Project Management',
@@ -117,16 +117,16 @@ export const translations = {
     },
     experience: [
       {
-        title: 'Desarrollador Wordpress - PHP',
-        company: 'Icontec Instituto de normas colombianas.',
+        title: 'WordPress - PHP Developer',
+        company: 'ICONTEC - Instituto Colombiano de Normas Técnicas',
         period: '2025 - Present',
-        description: 'construccion de aplicaciones web, eccomece y landing pages por medio de tecnologias js, php, node js desde el gestor de contenido Wordpress realizado solo desarrollo con codigo'
+        description: 'Building web applications, e-commerce platforms, and landing pages using JavaScript, PHP, and Node.js within the WordPress CMS. Focus on custom code development, integrating modern frameworks while maintaining accessibility and SEO best practices.'
       },
       {
-        title: 'web developer',
+        title: 'Web Developer',
         company: 'Colnodo',
         period: '2022 - 2025',
-        description: 'Construccion de paginas y aplicaciones web por edio de tecnologias como HTML, CSS, JS y PHP.  Manejo de crm como wordpress.'
+        description: 'Developed websites and web applications using HTML, CSS, JavaScript, and PHP. Managed CRM systems including WordPress, implementing collaborative workflows and Git Flow methodologies. Experience with landing pages, content management, and responsive design.'
       }
     ]
   },
@@ -141,16 +141,16 @@ export const translations = {
     },
     hero: {
       title: 'Anderson Chila',
-      subtitle: 'Desarrollador FullStack',
-      description: 'Creando experiencias digitales elegantes a través del código, diseño e innovación. Especializado en desarrollo full-stack con pasión por las tecnologías de vanguardia.',
+      subtitle: 'Desarrollador Full Stack',
+      description: 'Desarrollador full-stack creativo especializado en desarrollo de código con IA, aplicaciones web, sistemas CRM y WordPress. Construyendo experiencias digitales accesibles y optimizadas para SEO con tecnologías modernas.',
       viewProjects: 'Ver Proyectos',
       getInTouch: 'Contactar'
     },
     about: {
       title: 'Acerca de Mí',
-      intro1: 'Con más de 5 años de experiencia en desarrollo de software, me especializo en crear aplicaciones web de alto rendimiento que combinan diseño elegante con funcionalidad robusta.',
-      intro2: 'Mi pasión radica en resolver problemas complejos a través de código limpio y mantenible, y soluciones innovadoras. Prospero en entornos colaborativos donde puedo mentorear desarrolladores junior mientras aprendo continuamente nuevas tecnologías.',
-      intro3: 'Cuando no estoy programando, me encontrarás contribuyendo a proyectos de código abierto, escribiendo artículos técnicos o explorando los últimos desarrollos en web3 e IA.',
+      intro1: 'Desarrollador full-stack con un enfoque creativo y un fuerte énfasis en IA para el desarrollo de código. Me especializo en construir aplicaciones web, landing pages, sistemas CRM y soluciones de gestión de contenido usando WordPress.',
+      intro2: 'Experiencia en desarrollo de e-commerce, accesibilidad web, prácticas SEO y flujos de trabajo colaborativos usando Git Flow. Prospero en ambientes de equipo y entrego soluciones escalables con código limpio y mantenible.',
+      intro3: 'Mi stack técnico incluye JavaScript, React, Python y PHP, junto con sus frameworks y librerías relacionados. Actualmente explorando herramientas de desarrollo impulsadas por IA para mejorar la productividad y la calidad del código.',
       skillsTitle: 'Habilidades y Tecnologías',
       experienceTitle: 'Experiencia'
     },
@@ -159,15 +159,15 @@ export const translations = {
       subtitle: 'Creando experiencias digitales con tecnología de vanguardia',
       webDev: {
         title: 'Desarrollo Web',
-        description: 'Aplicaciones web personalizadas construidas con frameworks modernos y mejores prácticas para un rendimiento y escalabilidad óptimos.'
+        description: 'Aplicaciones web personalizadas y sistemas CRM construidos con tecnologías modernas incluyendo JavaScript, React, PHP y WordPress. Enfoque en código limpio, accesibilidad y optimización SEO.'
       },
       landing: {
-        title: 'Landing Pages',
-        description: 'Páginas de aterrizaje de alta conversión con diseño impresionante y experiencia de usuario perfecta para hacer crecer tu negocio.'
+        title: 'Landing Pages y CMS',
+        description: 'Páginas de aterrizaje de alta conversión y soluciones de gestión de contenido usando WordPress. Experiencia en desarrollo personalizado, diseño responsive e integración con servicios de terceros.'
       },
       ecommerce: {
-        title: 'E-Commerce',
-        description: 'Soluciones completas de tienda en línea con procesamiento seguro de pagos, gestión de inventario y analíticas.'
+        title: 'Soluciones E-Commerce',
+        description: 'Plataformas de e-commerce completas con procesamiento seguro de pagos, gestión de inventario y optimización de la experiencia del cliente. Construidas con escalabilidad y rendimiento en mente.'
       },
       techStackTitle: 'Tecnologías con las que Trabajo',
       frontend: 'Frontend',
@@ -207,7 +207,7 @@ export const translations = {
       github: 'GitHub',
       linkedin: 'LinkedIn',
       twitter: 'Twitter',
-      footer: '© 2024 Alex Rodriguez. Construido con React, TypeScript y Three.js'
+      footer: '© 2025 Anderson Chila. Construido con React, TypeScript y Three.js'
     },
     admin: {
       title: 'Gestión de Proyectos',
@@ -248,22 +248,16 @@ export const translations = {
     },
     experience: [
       {
-        title: 'Ingeniero de Software Principal',
-        company: 'Tech Innovations Inc.',
-        period: '2021 - Presente',
-        description: 'Liderando un equipo de 8 desarrolladores construyendo aplicaciones web escalables y arquitectura de microservicios.'
+        title: 'Desarrollador WordPress - PHP',
+        company: 'ICONTEC - Instituto Colombiano de Normas Técnicas',
+        period: '2025 - Presente',
+        description: 'Construcción de aplicaciones web, plataformas de e-commerce y landing pages usando JavaScript, PHP y Node.js dentro del CMS WordPress. Enfoque en desarrollo de código personalizado, integrando frameworks modernos mientras se mantienen prácticas de accesibilidad y SEO.'
       },
       {
-        title: 'Desarrollador Full Stack Senior',
-        company: 'Digital Solutions Co.',
-        period: '2018 - 2021',
-        description: 'Desarrollé aplicaciones de nivel empresarial usando React, Node.js e infraestructura en la nube.'
-      },
-      {
-        title: 'Desarrollador Full Stack',
-        company: 'StartUp Ventures',
-        period: '2015 - 2018',
-        description: 'Construí MVPs y aplicaciones de producción para varios clientes en diferentes industrias.'
+        title: 'Desarrollador Web',
+        company: 'Colnodo',
+        period: '2022 - 2025',
+        description: 'Desarrollé sitios web y aplicaciones web usando HTML, CSS, JavaScript y PHP. Gestioné sistemas CRM incluyendo WordPress, implementando flujos de trabajo colaborativos y metodologías Git Flow. Experiencia con landing pages, gestión de contenido y diseño responsive.'
       }
     ]
   }
