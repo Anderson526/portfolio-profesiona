@@ -296,6 +296,64 @@ export const GraphQLLogo = ({ className }: LogoProps) => (
     />
   </motion.svg>
 )
+export const PhpLogo = ({ className }: LogoProps) => (
+  <motion.svg
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    whileHover={{ rotate: 360 }}
+    transition={{ duration: 1 }}
+  >
+    <motion.path
+      d="M12 2C6 2 2 6 2 12C2 18 6 22 12 22C18 22 22 18 22 12C22 6 18 2 12 2Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      fill="currentColor"
+      fillOpacity="0.2"
+      animate={{ fillOpacity: [0.2, 0.4, 0.2] }}
+      transition={{ duration: 3, repeat: Infinity }}
+    />
+    <motion.text
+      x="12"
+      y="16"
+      textAnchor="middle"
+      fontSize="8"
+      fill="currentColor"
+    >
+      PHP
+    </motion.text>
+  </motion.svg>
+)
+
+export const WordPressLogo = ({ className }: LogoProps) => (
+  <motion.svg
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+    whileHover={{ rotate: 360 }}
+    transition={{ duration: 1 }}
+  >
+    <motion.path
+      d="M12 2C6 2 2 6 2 12C2 18 6 22 12 22C18 22 22 18 22 12C22 6 18 2 12 2Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      fill="currentColor"
+      fillOpacity="0.2"
+      animate={{ fillOpacity: [0.2, 0.4, 0.2] }}
+      transition={{ duration: 3, repeat: Infinity }}
+    />
+    <motion.text
+      x="12"
+      y="16"
+      textAnchor="middle"
+      fontSize="8"
+      fill="currentColor"
+    >
+      W
+    </motion.text>
+  </motion.svg>
+)
+  
 
 export const PostgreSQLLogo = ({ className }: LogoProps) => (
   <motion.svg

@@ -12,9 +12,10 @@ import {
 
 interface NavigationProps {
   onShowAllProjects: () => void
+  onShowCertificates?: () => void
 }
 
-export function Navigation({ onShowAllProjects }: NavigationProps) {
+export function Navigation({ onShowAllProjects, onShowCertificates }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
@@ -109,14 +110,17 @@ export function Navigation({ onShowAllProjects }: NavigationProps) {
                 </button>
               ))}
               
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={onShowAllProjects}
-                className="border-accent/50 hover:bg-accent/10 hover:text-accent"
-              >
-                {t('nav.allProjects')}
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="hover:bg-accent/10 hover:text-accent">
+                    {t('nav.more')}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem onClick={() => onShowAllProjects()}>{t('nav.allProjects')}</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => onShowCertificates && onShowCertificates()}>{t('nav.certificates')}</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
               
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -198,6 +202,7 @@ export function Navigation({ onShowAllProjects }: NavigationProps) {
                     {item.label}
                   </motion.button>
                 ))}
+                
                 <Button
                   variant="outline"
                   className="border-accent/50 hover:bg-accent/10 hover:text-accent w-full justify-start"
@@ -207,6 +212,16 @@ export function Navigation({ onShowAllProjects }: NavigationProps) {
                   }}
                 >
                   {t('nav.allProjects')}
+                </Button>
+                <Button
+                  variant="outline"
+                  className="border-accent/50 hover:bg-accent/10 hover:text-accent w-full justify-start"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false)
+                    onShowCertificates && onShowCertificates()
+                  }}
+                >
+                  {t('nav.certificates')}
                 </Button>
               </div>
             </div>

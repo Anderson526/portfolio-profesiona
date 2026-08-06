@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   MagnifyingGlass, 
@@ -14,6 +14,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { ProjectCard } from './ProjectCard'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useKV } from '@github/spark/hooks'
 import { useLanguage } from '@/hooks/use-language'
@@ -36,7 +37,36 @@ interface AllProjectsPageProps {
 }
 
 export function AllProjectsPage({ onClose }: AllProjectsPageProps) {
-  const [projects] = useKV<Project[]>('portfolio-projects', [])
+  const [projects, setProjects] = useKV<Project[]>('portfolio-projects', [])
+  
+  const SAMPLE_PROJECTS: Project[] = [
+    {
+      id: '1',
+      title: 'E-Commerce Platform for Icontec',
+      description: 'A modern, full-featured online marketplace with real-time inventory and payment processing.',
+      longDescription: 'Built a comprehensive e-commerce solution featuring real-time inventory management, secure payment processing with Stripe, advanced search and filtering, order tracking, and an admin dashboard.',
+      technologies: ['WordPress', 'WooCommerce', 'PHP', 'MySQL'],
+      githubUrl: 'https://github.com',
+      liveUrl: 'https://tienda.icontec.org/',
+      imageUrl: 'https://placehold.co/800x480?text=Project+1'
+    },
+    {
+      id: '2',
+      title: 'Landing Page Template',
+      description: 'High-converting landing page built with React and Tailwind.',
+      longDescription: 'Responsive landing page with animations, forms, and performance optimizations.',
+      technologies: ['React', 'Tailwind', 'Framer Motion'],
+      githubUrl: 'https://github.com',
+      liveUrl: 'https://example.com/',
+      imageUrl: 'https://placehold.co/800x480?text=Project+2'
+    }
+  ]
+
+  useEffect(() => {
+    if (!projects || projects.length === 0) {
+      setProjects(SAMPLE_PROJECTS)
+    }
+  }, [projects, setProjects])
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedTech, setSelectedTech] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<SortOption>('newest')
@@ -210,7 +240,6 @@ export function AllProjectsPage({ onClose }: AllProjectsPageProps) {
         <div className="container mx-auto px-6 py-12">
           {filteredAndSortedProjects.length === 0 ? (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-center py-20"
             >
@@ -253,22 +282,32 @@ export function AllProjectsPage({ onClose }: AllProjectsPageProps) {
 
       <Dialog open={selectedProject !== null} onOpenChange={() => setSelectedProject(null)}>
         <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto bg-card border-border">
-          {selectedProject && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="text-3xl font-bold">{selectedProject.title}</DialogTitle>
-                <DialogDescription className="text-muted-foreground text-base mt-2">
-                  {selectedProject.description}
-                </DialogDescription>
-              </DialogHeader>
+            {selectedProject && (
+              <>
+                {selectedProject.imageUrl && (
+                  <div className="w-full h-56 overflow-hidden rounded-md mb-4">
+                    <img
+                      src={selectedProject.imageUrl}
+                      alt={t(`projectsData.${selectedProject.id}.title`) || selectedProject.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
 
-              <div className="space-y-6 mt-6">
-                <div>
-                  <h4 className="text-lg font-semibold mb-3">{t('projects.aboutProject')}</h4>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {selectedProject.longDescription}
-                  </p>
-                </div>
+                <DialogHeader>
+                  <DialogTitle className="text-3xl font-bold">{t(`projectsData.${selectedProject.id}.title`) || selectedProject.title}</DialogTitle>
+                  <DialogDescription className="text-muted-foreground text-base mt-2">
+                    {t(`projectsData.${selectedProject.id}.description`) || selectedProject.description}
+                  </DialogDescription>
+                </DialogHeader>
+
+                <div className="space-y-6 mt-6">
+                  <div>
+                    <h4 className="text-lg font-semibold mb-3">{t('projects.aboutProject')}</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {t(`projectsData.${selectedProject.id}.longDescription`) || selectedProject.longDescription}
+                    </p>
+                  </div>
 
                 <div>
                   <h4 className="text-lg font-semibold mb-3">{t('projects.technologiesUsed')}</h4>
@@ -311,91 +350,4 @@ export function AllProjectsPage({ onClose }: AllProjectsPageProps) {
   )
 }
 
-interface ProjectCardProps {
-  project: Project
-  index: number
-  onClick: () => void
-}
-
-function ProjectCard({ project, index, onClick }: ProjectCardProps) {
-  const { t } = useLanguage()
-  
-  return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
-      whileHover={{ y: -8, transition: { duration: 0.2 } }}
-    >
-      <Card 
-        className="h-full bg-card border-border hover:border-accent/50 transition-all cursor-pointer group overflow-hidden"
-        onClick={onClick}
-      >
-        <div className="h-48 bg-gradient-to-br from-primary via-accent/20 to-secondary overflow-hidden relative">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,217,255,0.1),transparent_50%)]" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Folder size={64} className="text-accent/40 group-hover:text-accent/60 transition-colors" weight="duotone" />
-          </div>
-        </div>
-        
-        <CardHeader>
-          <CardTitle className="group-hover:text-accent transition-colors">
-            {project.title}
-          </CardTitle>
-          <CardDescription>{project.description}</CardDescription>
-        </CardHeader>
-        
-        <CardContent>
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.slice(0, 4).map((tech) => (
-              <Badge 
-                key={tech} 
-                variant="secondary"
-                className="bg-primary/10 border border-accent/20 text-foreground text-xs"
-              >
-                {tech}
-              </Badge>
-            ))}
-            {project.technologies.length > 4 && (
-              <Badge 
-                variant="secondary"
-                className="bg-primary/10 border border-accent/20 text-foreground text-xs"
-              >
-                +{project.technologies.length - 4}
-              </Badge>
-            )}
-          </div>
-        </CardContent>
-        
-        <CardFooter className="gap-2">
-          <Button 
-            variant="ghost" 
-            size="sm"
-            className="flex-1 hover:bg-accent/10 hover:text-accent"
-            onClick={(e) => {
-              e.stopPropagation()
-              window.open(project.githubUrl, '_blank')
-            }}
-          >
-            <GithubLogo size={16} weight="fill" className="mr-2" />
-            {t('projects.code')}
-          </Button>
-          <Button 
-            variant="ghost" 
-            size="sm"
-            className="flex-1 hover:bg-accent/10 hover:text-accent"
-            onClick={(e) => {
-              e.stopPropagation()
-              window.open(project.liveUrl, '_blank')
-            }}
-          >
-            <Globe size={16} weight="fill" className="mr-2" />
-            {t('projects.demo')}
-          </Button>
-        </CardFooter>
-      </Card>
-    </motion.div>
-  )
-}
+// Using shared ProjectCard component

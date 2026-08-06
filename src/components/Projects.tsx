@@ -8,80 +8,26 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { useKV } from '@github/spark/hooks'
 import { useLanguage } from '@/hooks/use-language'
+import { ProjectCard, Project as ProjectType } from './ProjectCard'
 
-interface Project {
-  id: string
-  title: string
-  description: string
-  longDescription: string
-  technologies: string[]
-  githubUrl: string
-  liveUrl: string
-  imageUrl?: string
-}
-
-const SAMPLE_PROJECTS: Project[] = [
+const SAMPLE_PROJECTS: ProjectType[] = [
   {
     id: '1',
-    title: 'E-Commerce Platform',
+    title: 'E-Commerce Platform for Icontec',
     description: 'A modern, full-featured online marketplace with real-time inventory and payment processing.',
     longDescription: 'Built a comprehensive e-commerce solution featuring real-time inventory management, secure payment processing with Stripe, advanced search and filtering, order tracking, and an admin dashboard. The platform handles thousands of concurrent users with optimized performance and caching strategies.',
-    technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'Stripe', 'Redis', 'AWS'],
+    technologies: ['WordPress', 'WooCommerce', 'PHP', 'MySQL', 'JavaScript', 'HTML', 'CSS'],
     githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
-  },
-  {
-    id: '2',
-    title: 'AI-Powered Analytics Dashboard',
-    description: 'Real-time data visualization platform with machine learning insights and predictive analytics.',
-    longDescription: 'Developed an advanced analytics dashboard that processes millions of data points in real-time. Integrated machine learning models for predictive analytics, anomaly detection, and trend forecasting. Features interactive charts, customizable widgets, and automated reporting capabilities.',
-    technologies: ['React', 'D3.js', 'Python', 'TensorFlow', 'FastAPI', 'MongoDB', 'Docker', 'Kubernetes'],
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
-  },
-  {
-    id: '3',
-    title: 'Collaborative Workspace Tool',
-    description: 'Team collaboration platform with real-time editing, video conferencing, and project management.',
-    longDescription: 'Created a comprehensive collaboration tool that combines real-time document editing, video conferencing, task management, and team chat. Implemented operational transformation for conflict-free collaborative editing and WebRTC for peer-to-peer communication.',
-    technologies: ['React', 'WebSocket', 'WebRTC', 'Node.js', 'MongoDB', 'Redis', 'Electron', 'GraphQL'],
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
-  },
-  {
-    id: '4',
-    title: '3D Product Configurator',
-    description: 'Interactive 3D visualization tool for customizing products with real-time rendering.',
-    longDescription: 'Built an immersive 3D product configurator using Three.js and WebGL. Users can customize materials, colors, and components in real-time with photorealistic rendering. Integrated with e-commerce backend for seamless purchasing of customized products.',
-    technologies: ['React', 'Three.js', 'WebGL', 'TypeScript', 'Blender', 'Node.js', 'AWS S3'],
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
-  },
-  {
-    id: '5',
-    title: 'Healthcare Management System',
-    description: 'HIPAA-compliant patient management system with telemedicine and electronic health records.',
-    longDescription: 'Developed a secure healthcare platform featuring patient portals, appointment scheduling, telemedicine video consultations, electronic health records, and prescription management. Implemented end-to-end encryption and audit logging for HIPAA compliance.',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'WebRTC', 'FHIR', 'Docker', 'AWS', 'OAuth 2.0'],
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
-  },
-  {
-    id: '6',
-    title: 'Blockchain NFT Marketplace',
-    description: 'Decentralized marketplace for creating, buying, and selling NFTs with smart contracts.',
-    longDescription: 'Built a full-stack NFT marketplace on Ethereum blockchain. Features include minting NFTs, auction mechanisms, wallet integration, royalty distribution, and IPFS storage for digital assets. Implemented smart contracts with comprehensive testing and security audits.',
-    technologies: ['React', 'Solidity', 'Ethereum', 'Web3.js', 'IPFS', 'Hardhat', 'TypeScript', 'The Graph'],
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
+    liveUrl: 'https://tienda.icontec.org/',
+    imageUrl: 'https://placehold.co/800x480?text=Icontec'
   }
 ]
 
 export function Projects() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [projects, setProjects] = useKV<Project[]>('portfolio-projects', [])
+  const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null)
+  const [projects, setProjects] = useKV<ProjectType[]>('portfolio-projects', [])
   const { t } = useLanguage()
   
   useEffect(() => {
@@ -140,10 +86,20 @@ export function Projects() {
         <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto bg-card border-border">
           {selectedProject && (
             <>
+              {selectedProject.imageUrl && (
+                <div className="w-full h-56 overflow-hidden rounded-md mb-4">
+                  <img
+                    src={selectedProject.imageUrl}
+                    alt={t(`projectsData.${selectedProject.id}.title`) || selectedProject.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+
               <DialogHeader>
-                <DialogTitle className="text-3xl font-bold">{selectedProject.title}</DialogTitle>
+                <DialogTitle className="text-3xl font-bold">{t(`projectsData.${selectedProject.id}.title`) || selectedProject.title}</DialogTitle>
                 <DialogDescription className="text-muted-foreground text-base mt-2">
-                  {selectedProject.description}
+                  {t(`projectsData.${selectedProject.id}.description`) || selectedProject.description}
                 </DialogDescription>
               </DialogHeader>
 
@@ -151,7 +107,7 @@ export function Projects() {
                 <div>
                   <h4 className="text-lg font-semibold mb-3">{t('projects.aboutProject')}</h4>
                   <p className="text-muted-foreground leading-relaxed">
-                    {selectedProject.longDescription}
+                    {t(`projectsData.${selectedProject.id}.longDescription`) || selectedProject.longDescription}
                   </p>
                 </div>
 
@@ -193,93 +149,5 @@ export function Projects() {
         </DialogContent>
       </Dialog>
     </>
-  )
-}
-
-interface ProjectCardProps {
-  project: Project
-  index: number
-  isInView: boolean
-  onClick: () => void
-}
-
-function ProjectCard({ project, index, isInView, onClick }: ProjectCardProps) {
-  const { t } = useLanguage()
-  
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: 0.1 + index * 0.1, duration: 0.6 }}
-      whileHover={{ y: -8, transition: { duration: 0.2 } }}
-    >
-      <Card 
-        className="h-full bg-card border-border hover:border-accent/50 transition-all cursor-pointer group overflow-hidden"
-        onClick={onClick}
-      >
-        <div className="h-48 bg-gradient-to-br from-primary via-accent/20 to-secondary overflow-hidden relative">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,217,255,0.1),transparent_50%)]" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Folder size={64} className="text-accent/40 group-hover:text-accent/60 transition-colors" weight="duotone" />
-          </div>
-        </div>
-        
-        <CardHeader>
-          <CardTitle className="group-hover:text-accent transition-colors">
-            {project.title}
-          </CardTitle>
-          <CardDescription>{project.description}</CardDescription>
-        </CardHeader>
-        
-        <CardContent>
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.slice(0, 4).map((tech) => (
-              <Badge 
-                key={tech} 
-                variant="secondary"
-                className="bg-primary/10 border border-accent/20 text-foreground text-xs"
-              >
-                {tech}
-              </Badge>
-            ))}
-            {project.technologies.length > 4 && (
-              <Badge 
-                variant="secondary"
-                className="bg-primary/10 border border-accent/20 text-foreground text-xs"
-              >
-                +{project.technologies.length - 4}
-              </Badge>
-            )}
-          </div>
-        </CardContent>
-        
-        <CardFooter className="gap-2">
-          <Button 
-            variant="ghost" 
-            size="sm"
-            className="flex-1 hover:bg-accent/10 hover:text-accent"
-            onClick={(e) => {
-              e.stopPropagation()
-              window.open(project.githubUrl, '_blank')
-            }}
-          >
-            <GithubLogo size={16} weight="fill" className="mr-2" />
-            {t('projects.code')}
-          </Button>
-          <Button 
-            variant="ghost" 
-            size="sm"
-            className="flex-1 hover:bg-accent/10 hover:text-accent"
-            onClick={(e) => {
-              e.stopPropagation()
-              window.open(project.liveUrl, '_blank')
-            }}
-          >
-            <Globe size={16} weight="fill" className="mr-2" />
-            {t('projects.demo')}
-          </Button>
-        </CardFooter>
-      </Card>
-    </motion.div>
   )
 }

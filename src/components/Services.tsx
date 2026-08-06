@@ -25,7 +25,9 @@ import {
   DockerLogo,
   AWSLogo,
   GitLogo,
-  KubernetesLogo
+  KubernetesLogo,
+  PhpLogo,
+  WordPressLogo
 } from '@/components/TechLogos'
 
 const services = [
@@ -66,10 +68,12 @@ const technologies: Technology[] = [
   { name: 'Tailwind', icon: TailwindLogo, color: 'from-cyan-400 to-blue-400', category: 'frontend' },
   { name: 'Three.js', icon: ThreeJsLogo, color: 'from-gray-600 to-gray-800', category: 'frontend' },
   { name: 'Vue.js', icon: VueLogo, color: 'from-green-500 to-teal-500', category: 'frontend' },
+  { name: 'WordPress', icon: WordPressLogo, color: 'from-blue-500 to-blue-700', category: 'frontend' },
   
   { name: 'Node.js', icon: NodeJsLogo, color: 'from-green-500 to-green-700', category: 'backend' },
   { name: 'Python', icon: PythonLogo, color: 'from-blue-400 to-yellow-400', category: 'backend' },
   { name: 'GraphQL', icon: GraphQLLogo, color: 'from-pink-500 to-purple-500', category: 'backend' },
+  { name: 'PHP', icon: PhpLogo, color: 'from-blue-500 to-blue-700', category: 'backend' },
   
   { name: 'PostgreSQL', icon: PostgreSQLLogo, color: 'from-blue-500 to-blue-700', category: 'database' },
   { name: 'MongoDB', icon: MongoDBLogo, color: 'from-green-500 to-green-700', category: 'database' },
@@ -80,6 +84,8 @@ const technologies: Technology[] = [
   { name: 'AWS', icon: AWSLogo, color: 'from-orange-500 to-yellow-500', category: 'tools' },
   { name: 'Git', icon: GitLogo, color: 'from-orange-600 to-red-600', category: 'tools' },
   { name: 'Kubernetes', icon: KubernetesLogo, color: 'from-blue-600 to-purple-600', category: 'tools' }
+
+
 ]
 
 export function Services() {

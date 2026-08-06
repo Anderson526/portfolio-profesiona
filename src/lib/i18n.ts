@@ -5,6 +5,8 @@ export const translations = {
       about: 'About',
       services: 'Services',
       projects: 'Projects',
+      more: 'More +',
+      certificates: 'Certificates',
       contact: 'Contact',
       allProjects: 'All Projects'
     },
@@ -68,6 +70,19 @@ export const translations = {
       sortAZ: 'A-Z',
       sortZA: 'Z-A',
       backToHome: 'Back to Home'
+    },
+    certifications: {
+      title: 'Certifications',
+      allCertificatesTitle: 'All Certifications',
+      noCerts: 'No certifications yet. Check back soon!',
+      viewCertificate: 'View Certificate'
+    },
+    projectsData: {
+      '1': {
+        title: 'E-Commerce Platform for Icontec',
+        description: 'A modern, full-featured online marketplace with real-time inventory and payment processing.',
+        longDescription: 'Built a comprehensive e-commerce solution featuring real-time inventory management, secure payment processing with Stripe, advanced search and filtering, order tracking, and an admin dashboard.'
+      }
     },
     contact: {
       title: "Let's Work Together",
@@ -135,6 +150,8 @@ export const translations = {
       home: 'Inicio',
       about: 'Acerca',
       services: 'Servicios',
+      more: 'Más +',
+      certificates: 'Certificados',
       projects: 'Proyectos',
       contact: 'Contacto',
       allProjects: 'Todos los Proyectos'
@@ -148,7 +165,7 @@ export const translations = {
     },
     about: {
       title: 'Acerca de Mí',
-      intro1: 'Desarrollador full-stack con un enfoque creativo y un fuerte énfasis en IA para el desarrollo de código. Me especializo en construir aplicaciones web, landing pages, sistemas CRM y soluciones de gestión de contenido usando WordPress.',
+      intro1: 'Desarrollador full-stack con un enfoque creativo. Me especializo en construir aplicaciones web, landing pages, sistemas CRM y soluciones de gestión de contenido usando WordPress.',
       intro2: 'Experiencia en desarrollo de e-commerce, accesibilidad web, prácticas SEO y flujos de trabajo colaborativos usando Git Flow. Prospero en ambientes de equipo y entrego soluciones escalables con código limpio y mantenible.',
       intro3: 'Mi stack técnico incluye JavaScript, React, Python y PHP, junto con sus frameworks y librerías relacionados. Actualmente explorando herramientas de desarrollo impulsadas por IA para mejorar la productividad y la calidad del código.',
       skillsTitle: 'Habilidades y Tecnologías',
@@ -200,6 +217,12 @@ export const translations = {
       sortZA: 'Z-A',
       backToHome: 'Volver al Inicio'
     },
+    certifications: {
+      title: 'Certificaciones',
+      allCertificatesTitle: 'Todos los Certificados',
+      noCerts: 'Aún no hay certificados. ¡Vuelve pronto!',
+      viewCertificate: 'Ver Certificado'
+    },
     contact: {
       title: 'Trabajemos Juntos',
       description: 'Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tu visión.',
@@ -245,6 +268,13 @@ export const translations = {
       projectDeleted: 'Proyecto eliminado exitosamente',
       welcomeAdmin: 'Bienvenido al Panel de Administración',
       invalidPassword: 'Contraseña inválida'
+    },
+    projectsData: {
+      '1': {
+        title: 'Plataforma de E-Commerce para Icontec',
+        description: 'Una moderna plataforma de comercio electrónico con inventario en tiempo real y procesamiento de pagos.',
+        longDescription: 'Construí una solución de e-commerce integral con gestión de inventario en tiempo real, procesamiento de pagos seguro, búsqueda y filtros avanzados, seguimiento de pedidos y un panel de administración.'
+      }
     },
     experience: [
       {
