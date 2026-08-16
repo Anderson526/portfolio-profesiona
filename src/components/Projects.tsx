@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { useKV } from '@github/spark/hooks'
 import { useLanguage } from '@/hooks/use-language'
 import { ProjectCard, Project as ProjectType } from './ProjectCard'
+import icontecWebsite from '@/img/projectsimg/icontecwebsite.png'
 
 const SAMPLE_PROJECTS: ProjectType[] = [
   {
@@ -19,7 +20,7 @@ const SAMPLE_PROJECTS: ProjectType[] = [
     technologies: ['WordPress', 'WooCommerce', 'PHP', 'MySQL', 'JavaScript', 'HTML', 'CSS'],
     githubUrl: 'https://github.com',
     liveUrl: 'https://tienda.icontec.org/',
-    imageUrl: 'https://placehold.co/800x480?text=Icontec'
+    imageUrl: icontecWebsite
   }
 ]
 

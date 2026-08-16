@@ -18,6 +18,7 @@ import { ProjectCard } from './ProjectCard'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useKV } from '@github/spark/hooks'
 import { useLanguage } from '@/hooks/use-language'
+import icontecWebsite from '@/img/projectsimg/icontecwebsite.png'
 
 interface Project {
   id: string
@@ -48,17 +49,7 @@ export function AllProjectsPage({ onClose }: AllProjectsPageProps) {
       technologies: ['WordPress', 'WooCommerce', 'PHP', 'MySQL'],
       githubUrl: 'https://github.com',
       liveUrl: 'https://tienda.icontec.org/',
-      imageUrl: 'https://placehold.co/800x480?text=Project+1'
-    },
-    {
-      id: '2',
-      title: 'Landing Page Template',
-      description: 'High-converting landing page built with React and Tailwind.',
-      longDescription: 'Responsive landing page with animations, forms, and performance optimizations.',
-      technologies: ['React', 'Tailwind', 'Framer Motion'],
-      githubUrl: 'https://github.com',
-      liveUrl: 'https://example.com/',
-      imageUrl: 'https://placehold.co/800x480?text=Project+2'
+      imageUrl: icontecWebsite
     }
   ]
 

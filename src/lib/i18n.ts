@@ -75,7 +75,8 @@ export const translations = {
       title: 'Certifications',
       allCertificatesTitle: 'All Certifications',
       noCerts: 'No certifications yet. Check back soon!',
-      viewCertificate: 'View Certificate'
+      viewCertificate: 'View Certificate',
+      viewAllCertificates: 'View all certificates'
     },
     projectsData: {
       '1': {
@@ -159,7 +160,7 @@ export const translations = {
     hero: {
       title: 'Anderson Chila',
       subtitle: 'Desarrollador Full Stack',
-      description: 'Desarrollador full-stack creativo especializado en desarrollo de código con IA, aplicaciones web, sistemas CRM y WordPress. Construyendo experiencias digitales accesibles y optimizadas para SEO con tecnologías modernas.',
+      description: 'Desarrollador full-stack creativo con fuerte conocimiento en desarrollo IA, aplicaciones web, sistemas CRM y WordPress. Construyendo experiencias digitales accesibles y optimizadas para SEO con tecnologías modernas.',
       viewProjects: 'Ver Proyectos',
       getInTouch: 'Contactar'
     },
@@ -221,7 +222,8 @@ export const translations = {
       title: 'Certificaciones',
       allCertificatesTitle: 'Todos los Certificados',
       noCerts: 'Aún no hay certificados. ¡Vuelve pronto!',
-      viewCertificate: 'Ver Certificado'
+      viewCertificate: 'Ver Certificado',
+      viewAllCertificates: 'Ver todos los certificados'
     },
     contact: {
       title: 'Trabajemos Juntos',

@@ -45,7 +45,7 @@ function App() {
           <About />
           <Services />
           <Projects />
-          <Certifications />
+          <Certifications onShowAllCertificates={() => setShowCertificates(true)} />
           <Contact />
         </main>
         

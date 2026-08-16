@@ -8,28 +8,11 @@ import { Input } from '@/components/ui/input'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { useKV } from '@github/spark/hooks'
 import { useLanguage } from '@/hooks/use-language'
-
-interface CertificateItem {
-  id: string
-  title: string
-  year: string
-  link: string
-  imageUrl?: string
-}
+import { DEFAULT_CERTIFICATES, type CertificateItem } from '@/lib/certificates'
 
 interface AllCertificationsPageProps {
   onClose: () => void
 }
-
-const SAMPLE_CERTS: CertificateItem[] = [
-  {
-    id: 'c-1',
-    title: 'Full-Stack Web Development - Coursera',
-    year: '2024',
-    link: 'https://example.com/certificate/1',
-    imageUrl: 'https://placehold.co/800x480?text=Cert+1'
-  }
-]
 
 export function AllCertificationsPage({ onClose }: AllCertificationsPageProps) {
   const [certs, setCerts] = useKV<CertificateItem[]>('portfolio-certificates', [])
@@ -40,26 +23,14 @@ export function AllCertificationsPage({ onClose }: AllCertificationsPageProps) {
 
   useEffect(() => {
     if (!certs || certs.length === 0) {
-      if (projects && projects.length > 0) {
-        const p = projects[0]
-        const cloned: CertificateItem = {
-          id: `c-${p.id}`,
-          title: p.title || `Certificate ${p.id}`,
-          year: new Date().getFullYear().toString(),
-          link: p.liveUrl || p.githubUrl || '#',
-          imageUrl: p.imageUrl || `https://placehold.co/800x480?text=Cert+${p.id}`
-        }
-        setCerts([cloned])
-      } else {
-        setCerts(SAMPLE_CERTS)
-      }
+      setCerts(DEFAULT_CERTIFICATES)
     }
-  }, [certs, setCerts, projects])
+  }, [certs, setCerts])
 
   const filtered = useMemo(() => {
     if (!certs) return []
     const q = searchQuery.toLowerCase()
-    return certs.filter(c => c.title.toLowerCase().includes(q) || c.year.includes(q))
+    return certs.filter(c => c.title.toLowerCase().includes(q) || c.issuer.toLowerCase().includes(q) || c.issued.toLowerCase().includes(q) || (c.credentialId || '').toLowerCase().includes(q))
   }, [certs, searchQuery])
 
   return (
@@ -112,24 +83,31 @@ export function AllCertificationsPage({ onClose }: AllCertificationsPageProps) {
               <AnimatePresence mode="popLayout">
                 {filtered.map((cert, index) => (
                   <motion.div key={cert.id} layout initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.2, delay: index * 0.04 }}>
-                    <Card className="h-full bg-card border-border cursor-pointer" onClick={() => setSelectedCert(cert)}>
-                      <div className="h-44 overflow-hidden rounded-t-md bg-muted">
-                        {cert.imageUrl ? (
-                          <img src={cert.imageUrl} alt={cert.title} className="w-full h-full object-cover" />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                            <FilePdf size={40} />
-                          </div>
-                        )}
-                      </div>
-                      <CardHeader>
-                        <CardTitle>{cert.title}</CardTitle>
-                        <CardDescription>{cert.year}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="flex gap-2 flex-wrap">
-                          <Badge variant="secondary" className="text-xs">{cert.year}</Badge>
+                    <Card className="h-full bg-card border-border cursor-pointer overflow-hidden" onClick={() => setSelectedCert(cert)}>
+                      {cert.imageUrl ? (
+                        <div className="flex items-center justify-center h-20 border-b border-border bg-background/40 px-4">
+                          <img src={cert.imageUrl} alt={cert.issuer} className="max-h-10 max-w-[140px] object-contain" />
                         </div>
+                      ) : (
+                        <div className="px-6 pt-6">
+                          <Badge variant="secondary" className="text-[10px] uppercase tracking-[0.12em]">
+                            {cert.issuer}
+                          </Badge>
+                        </div>
+                      )}
+                      <CardHeader className="space-y-3 pt-5">
+                        <div className="flex items-center justify-between gap-3">
+                          <span className="text-xs text-muted-foreground">{cert.issuer}</span>
+                          <span className="text-xs text-muted-foreground">{cert.issued}</span>
+                        </div>
+                        <CardTitle className="text-lg leading-snug">{cert.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        {cert.credentialId && (
+                          <p className="text-xs text-muted-foreground break-all">
+                            ID: <span className="font-mono text-foreground">{cert.credentialId}</span>
+                          </p>
+                        )}
                       </CardContent>
                       <CardFooter>
                         <Button variant="ghost" onClick={() => window.open(cert.link, '_blank')}>
@@ -154,8 +132,16 @@ export function AllCertificationsPage({ onClose }: AllCertificationsPageProps) {
                   </div>
                 )}
                 <DialogHeader>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <Badge variant="secondary">{selectedCert.issuer}</Badge>
+                    <span className="text-sm text-muted-foreground">{selectedCert.issued}</span>
+                  </div>
                   <DialogTitle className="text-3xl font-bold">{selectedCert.title}</DialogTitle>
-                  <DialogDescription className="text-muted-foreground text-base mt-2">{selectedCert.year}</DialogDescription>
+                  {selectedCert.credentialId && (
+                    <DialogDescription className="text-muted-foreground text-base mt-2 break-all">
+                      Credential ID: <span className="font-mono text-foreground">{selectedCert.credentialId}</span>
+                    </DialogDescription>
+                  )}
                 </DialogHeader>
                 <div className="mt-6">
                   <Button onClick={() => window.open(selectedCert.link, '_blank')}>{t('certifications.viewCertificate')}</Button>
